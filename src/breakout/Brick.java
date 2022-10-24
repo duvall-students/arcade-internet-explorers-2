@@ -1,3 +1,4 @@
+package breakout;
 //Sophie Halish
 
 import javafx.scene.Node;
