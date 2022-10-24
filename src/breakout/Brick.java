@@ -4,10 +4,12 @@ package breakout;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import highLevel.Breakables;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class Brick extends Breakables{
+public class Brick extends Breakables {
     private final int pointValue=1;
     private int amountToBreak;
 

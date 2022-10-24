@@ -17,6 +17,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import highLevel.Breakables;
+import highLevel.Player;
 
 public class SettingScene extends Application{
 	private Scene myScene;
