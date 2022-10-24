@@ -37,7 +37,7 @@ Character
   velocity v
   view v
   startX v
-  startY v
+ startY v
   speed v
   
   reset m
@@ -101,4 +101,8 @@ Galaga implements VideoGame
 
   
   setUpEnemy m
-  enemyCollision m
+  enemyCollision m 
+  
+![IMG_1564](https://user-images.githubusercontent.com/113381324/197603108-1b4bbffa-5355-4f57-a8a5-684143302ed8.jpeg)
+![IMG_1566](https://user-images.githubusercontent.com/113381324/197603112-eaf6564c-498e-4855-bf91-bda0b0aa9e37.jpeg)
+![IMG_1565](https://user-images.githubusercontent.com/113381324/197603116-9264bc20-d9ac-4fb8-9346-90e3f88b165c.jpeg)
