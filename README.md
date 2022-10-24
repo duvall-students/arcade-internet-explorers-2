@@ -7,7 +7,7 @@ Project desciption: a video game interface that can be used to play either break
 How to run/play the game: run the play class
 
 design plan: v=variable, m=method
-# VideoGame(interface)
+# VideoGame(interface) (maddie)
   - setUp
   - step
   - advanceLevel
@@ -15,7 +15,7 @@ design plan: v=variable, m=method
   - addPowerUp
   
 # SuperClasses:
-- Weapon
+- Weapon (sibel)
   - velocity (v)
   - speed (v)
   - size (v)
@@ -23,7 +23,7 @@ design plan: v=variable, m=method
   
   - move (abstract) (m)
   - getView (m)
-- Breakable
+- Breakable (sophie)
   - randomDice? (v)
   - amountToBreak (v)
   - pointValue (v)
@@ -33,7 +33,7 @@ design plan: v=variable, m=method
   - randomInRange (m)
   - getView (m)
   - startLocation (abstract) (m)
-- Character
+- Character (sibel)
   - velocity (v)
   - view (v)
   - startX (v)
