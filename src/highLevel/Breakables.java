@@ -1,6 +1,4 @@
-package breakout;
-
-//Sophie Halish
+package highLevel;//Sophie Halish
 
 import javafx.scene.Node;
 import java.util.Random;

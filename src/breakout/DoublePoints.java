@@ -5,11 +5,12 @@ package breakout;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import highLevel.Breakables;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class DoublePoints extends Breakables{
+public class DoublePoints extends Breakables {
 
     private ImageView doublePTView;
     private final int pointValue=5;
