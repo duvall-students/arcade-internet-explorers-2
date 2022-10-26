@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class Paddle {
+public class Paddle{
 
     private ImageView paddleView;
     private Point2D paddleVelocity;

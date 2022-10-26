@@ -31,11 +31,10 @@ public class Character {
 	
 	
 	// possibly might just make this a very basic constructor, update Paddle / SpaceShip as needed
-    public Character()
-    {
+    public Character() {
         try{
             characterView=new ImageView(new Image(new FileInputStream(CHARACTER_)));
-            characterView.setFitHeight(30);
+            characterView.setFitHeight(30); // rough draft of sizes. depends on waht it looks like
             characterView.setFitWidth(30);
             characterView.setX(START_X);
             characterView.setY(START_Y);
