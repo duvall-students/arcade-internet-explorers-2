@@ -19,8 +19,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import highLevel.Breakables;
 import highLevel.Player;
+import highLevel.VideoGame;
 
-public class SettingScene extends Application{
+public class SettingScene extends Application implements VideoGame{
+	
+	//background and scene setting variables
 	private Scene myScene;
 	public static final int SIZE = 400;
 	public static final Paint BACKGROUND = Color.AZURE;
@@ -29,33 +32,36 @@ public class SettingScene extends Application{
 	public static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private int BRICKAMOUNT=5;
 	public static final String TITLE = "Breakout";
-	public Ball theBall;
-	private int locationOfMessage;
-	private boolean onLevelOne=true;
-
-	public Brick myBrick;
-	public Paddle userPaddle;
-	public List<Brick> myBricks;
-	public List<BlockBrick> myBlocks;
-	public List<Breakables> myPowerUps;
-	public int pointMultiplier=1;
-	public Player myPlayer=new Player();
-	public int playerLives=3;
-	public int currentScore=0;
-	public int highestScore = 0;
-
+	public int POINTMULTIPLIER=1;
+	public int PLAYERLIVES=3;
+	public int CURRENTSCORE=0;
+	public int HIGHESTSCORE = 0;
 	private int level=1;
+	private int variableX=10;
+	private int variableY=390;
 
+	//instance variables for the game
+	public Ball theBall=new Ball();
+	public Brick myBrick;
+	public Paddle userPaddle=new Paddle();
+	public Player myPlayer=new Player();
 	
+	//lists of multiple variations
+	public List<Brick> myBricks=new ArrayList<>();;
+	public List<BlockBrick> myBlocks=new ArrayList<>();;
+	public List<Breakables> myPowerUps=new ArrayList<>();;
+	public List<String> allMySayings=new ArrayList<>();
+
+
+	//everything in my scene
 	private Group root=new Group();
 	
-	
-
+	//is this needed since I only edit root here?
 	public Group getRoot() {
 		return root;
 	}
 
-
+	//same question as above
 	public List<Brick> getMyBricks() {
 		return myBricks;
 	}
@@ -64,7 +70,7 @@ public class SettingScene extends Application{
 	@Override
 	public void start(Stage stage) {
 		//attach scene to stage and display it
-		myScene=setUpGame(SIZE,SIZE,BACKGROUND);
+		myScene=setUp(SIZE,SIZE,BACKGROUND);
 		stage.setScene(myScene);
         stage.setTitle(TITLE);
         stage.show();
@@ -78,69 +84,45 @@ public class SettingScene extends Application{
 	}
 	
 	
-	public Scene setUpGame(int width, int height, Paint background) {
-		//text
-		//I see the issue that it is semi copied, maybe do a for loop and change the Y each time, but how would I change the message, set message ahead of time?
-		Text text=new Text();
-		
-		//it does not like playerLives, do not understand the errors, but this is the theory behind it
-    	String liveCounter="Lives Left: "+playerLives;
-    	text.setText(liveCounter);
-    	text.setX(10);
-    	text.setY(390);
-    	root.getChildren().add(text);
+	public Scene setUp(int width, int height, Paint background) {
+		//create all my sayings and add them to the list
+    	allMySayings.add("Lives Left: "+PLAYERLIVES);
+    	allMySayings.add("Current Points: "+CURRENTSCORE);
+    	allMySayings.add("Highest Score: "+ myPlayer.getHighScore(CURRENTSCORE));
     	
-    	Text text2=new Text();
-    	String currentPoints="Current Points: "+currentScore;
-    	text2.setText(currentPoints);
-    	text2.setX(10);
-    	text2.setY(370);
-    	root.getChildren().add(text2);
-    	
-    	
-		//not sure how to keep the highest score
-    	Text text3=new Text();
-    	String highestScoreEver="Highest Score: "+ myPlayer.getHighScore(currentScore);
-    	text3.setText(highestScoreEver);
-    	text3.setX(300);
-    	text3.setY(20);
-    	root.getChildren().add(text3);
-		
-		//get the ball soph created
-		theBall=new Ball();
-
-		//get paddle
-		userPaddle=new Paddle();
+    	//run through all the strings and add them
+    	for (String screenText : allMySayings) {
+    		Text text=new Text();
+    		text.setText(screenText);
+    		text.setX(variableX);
+    		text.setY(variableY);
+    		root.getChildren().add(text);
+    		variableY=variableY-20;
+    	}
 		
 		//adding the ball to the collection
 		root.getChildren().add(theBall.getView());
-
-		//adding in however many bricks wanted
-		myBricks = new ArrayList<>();
-		myPowerUps=new ArrayList<>();
-		myBlocks=new ArrayList<>();
-		for(int i=0;i<level;i++)
-		{
-			setUpBricks(i);
-		}
-		
 		
 		//adding the paddle to the view
 		root.getChildren().add(userPaddle.getView());
+
+		//adding in however many bricks wanted
+		for(int i=0;i<level;i++){
+			setUpBreakable(i);
+		}
 		
 		
 		//creating a scene with the information
 		Scene scene = new Scene(root, width, height, background);
-		scene.setOnKeyPressed(e -> handleKeyInput(e.getCode()));
-//		scene.setOnMouseClicked(e -> handleMouseInput());
+		scene.setOnKeyPressed(e -> keyInput(e.getCode()));
 		return scene;
 	}
 	
+	
 	// Change properties of shapes in small ways to animate them over time
-	 
-    private void step (double elapsedTime) {
+    public void step (double elapsedTime) {
     	
-        // update "actors" attributes, bricks shouldn't move?
+        // updated the ball location over time
         theBall.move(elapsedTime);
 
         // if it hits wall, bounces
@@ -152,9 +134,10 @@ public class SettingScene extends Application{
 			if ( theBall.getView().getBoundsInParent().intersects(brick.getView().getBoundsInParent())) {
 				theBall.collision();
 				brickCollision(brick);
+				
 				//print it
 				Text text2=new Text();
-		    	String currentPoints="Current Points: "+currentScore;
+		    	String currentPoints="Current Points: "+CURRENTSCORE;
 		    	text2.setText(currentPoints);
 		    	text2.setX(10);
 		    	text2.setY(370);
@@ -174,7 +157,7 @@ public class SettingScene extends Application{
 				myPowerUps.remove(powerUp);
 				root.getChildren().remove(powerUp.getView());
 				//increase point multiplier
-				pointMultiplier++;
+				POINTMULTIPLIER++;
 			}
 		}
 		if (myBricks.isEmpty()) {
@@ -205,9 +188,9 @@ public class SettingScene extends Application{
 			theBall.collision();
 			// player loses life. Problem is that Points/Player is not in this package
 			myPlayer.loseLife();
-			playerLives=myPlayer.getLifeAmount();
+			PLAYERLIVES=myPlayer.getLifeAmount();
 			Text text=new Text();
-	    	String welcome="Lives Left: "+playerLives;
+	    	String welcome="Lives Left: "+PLAYERLIVES;
 	    	text.setText(welcome);
 	    	text.setX(10);
 	    	text.setY(390);
@@ -237,20 +220,13 @@ public class SettingScene extends Application{
 
 			//add to points
 			int brickValue=brick.getPointValue();
-			myPlayer.increaseCurrentScore(brickValue*pointMultiplier);
-			currentScore=myPlayer.getCurrentScore();	
+			myPlayer.increaseCurrentScore(brickValue*POINTMULTIPLIER);
+			CURRENTSCORE=myPlayer.getCurrentScore();	
 		}
-		highestScore = myPlayer.getHighScore(currentScore);
+		HIGHESTSCORE = myPlayer.getHighScore(CURRENTSCORE);
 	}
 
-	public void setUpBricks(int level){
-//		//reset ball and clear message
-//		if (!onLevelOne) {
-//			root.getChildren().clear();
-//			theBall.resetBall();
-//			userPaddle.resetPaddle();
-//			theBall.collision();
-//		}
+	public void setUpBreakable(int level){
 		//adding in however many bricks wanted
 		for(int i=0;i<BRICKAMOUNT;i++) {
 			Brick newBrick = new Brick();
@@ -258,10 +234,11 @@ public class SettingScene extends Application{
 			myBricks.add(newBrick);
 			root.getChildren().add(newBrick.getView());
 		}
-		for(int i=1;i<level;i++) //add hard brick for every level after 1
-		{
+		
+		//add hard brick for every level after 1
+		for(int i=1;i<level;i++) {
 			addHardBrick(i);
-			addDoublePointsPowerUp();
+			addPowerUp();
 		}
 	}
 
@@ -273,7 +250,7 @@ public class SettingScene extends Application{
 		root.getChildren().add(hardBrick.getView());
 	}
 
-	public void addDoublePointsPowerUp()
+	public void addPowerUp()
 	{
 		DoublePoints powerupDP=new DoublePoints();
 		powerupDP.setRandomLocation(SIZE);
@@ -292,10 +269,10 @@ public class SettingScene extends Application{
 	public void advanceLevel(int level){
 		theBall.resetBall();
 		userPaddle.resetPaddle();
-		setUpBricks(level);
+		setUpBreakable(level);
 	}
 
-	private void handleKeyInput (KeyCode code) {
+	public void keyInput (KeyCode code) {
 		if(code== KeyCode.LEFT)
 		{
 			userPaddle.move(-1);
