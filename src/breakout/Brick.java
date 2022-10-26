@@ -14,18 +14,13 @@ public class Brick extends Breakables {
     private int amountToBreak;
 
     public static final String BRICK_IMAGE = "resources/brick1.gif";
-    private ImageView brickView;
-    
     
 
     public Brick(){
-        try{
-            brickView =new ImageView(new Image(new FileInputStream(BRICK_IMAGE)));
-        }
-        catch(FileNotFoundException e){}
+        super(BRICK_IMAGE);
         //set brick size
-        brickView.setFitWidth(BRICK_WIDTH);
-        brickView.setFitHeight(BRICK_HEIGHT);
+        breakableView.setFitWidth(BRICK_WIDTH);
+        breakableView.setFitHeight(BRICK_HEIGHT);
         amountToBreak=1;
     }
 
@@ -43,18 +38,13 @@ public class Brick extends Breakables {
         amountToBreak--;
     }
 
-    public Node getView(){
-        return brickView;
-    }
-
-
     //set brick location
     //set width and height
     //screen size is 400 by 400
     public void setStartLocation(int currentBrick, int numBricks)
     {
-            brickView.setX(BRICK_WIDTH*currentBrick);
-            brickView.setY(BRICK_HEIGHT*(currentBrick+(numBricks/5)));
+            breakableView.setX(BRICK_WIDTH*currentBrick);
+            breakableView.setY(BRICK_HEIGHT*(currentBrick+(numBricks/5)));
     }
 
 }
