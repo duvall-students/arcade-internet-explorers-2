@@ -16,7 +16,7 @@ public class Character {
 	private final int START_Y = 375;
 	private final int SPEED = 40;
 	
-	private final String CHARACTER_IMAGE = " " // where do we find the character
+	private final String CHARACTER_IMAGE = "" // where do we find the character
 			
 			
 	/// unsure about this one, all about getting the right image		
