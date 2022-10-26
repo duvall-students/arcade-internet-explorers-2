@@ -12,11 +12,10 @@ import java.io.FileInputStream;
 public abstract class Character {
 	
 	private Point2D velocity;
-	private ImageView characterView;
+	protected ImageView characterView;
 	private final int START_X = 150;
 	private final int START_Y = 375;
 	private final int SPEED = 40;
-	
 	
 	
 	// possibly might just make this a very basic constructor, update Paddle / SpaceShip as needed

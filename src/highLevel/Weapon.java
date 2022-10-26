@@ -17,6 +17,7 @@ public abstract class Weapon {
 	protected ImageView weaponView;
 	
 	
+	
 	// similar problem of character. how do we get the view we want?
 	public Weapon(String image) {
         try{
