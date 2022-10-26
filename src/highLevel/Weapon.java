@@ -1,7 +1,7 @@
 package highLevel;
 
 import java.awt.Image;
-import java.awt.geom.Point2D;
+import javafx.geometry.Point2D;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -18,18 +18,19 @@ public abstract class Weapon {
 	
 	// similar problem of character. how do we get the view we want?
 	public Weapon() {
-	    {
-	        try{
-	            weaponView=new ImageView(new Image(new FileInputStream(CweaponView)));
+	    
+	 //       try{
+	   //         weaponView=new ImageView(new Image(new FileInputStream(CweaponView)));
 	            weaponView.setFitHeight(30); // rough draft of sizes. depends on what it looks like
 	            weaponView.setFitWidth(30); 
 
-	        }
-	        catch(FileNotFoundException e){}
+	        
+	 //       catch(FileNotFoundException e){}
 	        velocity=new Point2D(SPEED, SPEED);
-
-	    } 
 	}
+
+	    
+	
 	
 	public abstract void move();
 	
