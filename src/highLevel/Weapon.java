@@ -4,36 +4,29 @@ import java.awt.Image;
 import javafx.geometry.Point2D;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-import javafx.scene.Node;
 import javafx.scene.image.ImageView;
+import javafx.scene.Node;
+import java.io.FileInputStream;
+
 
 public abstract class Weapon {
 	
-	private Point2D velocity;
-	private final int SPEED = 100;
+	private Point2D weaponVelocity;
+	private final int weaponSPEED = 100;
 	private final int size = 10;
-	private ImageView weaponView;
+	protected ImageView weaponView;
 	
 	
 	// similar problem of character. how do we get the view we want?
-	public Weapon() {
-	    
-	        try{
-	            weaponView=new ImageView(new Image(new FileInputStream(CweaponView)));
-	            weaponView.setFitHeight(30); // rough draft of sizes. depends on what it looks like
-	            weaponView.setFitWidth(30); 
-	        }
-
-	        
-	        catch(FileNotFoundException e){
-	        velocity=new Point2D(SPEED, SPEED);
-	        }
+	public Weapon(String image) {
+        try{
+            weaponView = new ImageView(new Image(new FileInputStream(image)));
+            weaponVelocity = new Point2D(weaponSPEED, weaponSPEED);
+        }
+        catch(FileNotFoundException e){}
+	             
 	}
 
-	    
-	
-	
 	public abstract void move();
 	
     public Node getView(){
