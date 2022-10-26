@@ -1,39 +1,41 @@
 package breakout;
 //Sophie Halish
+import highLevel.Breakables;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class BlockBrick extends Brick{
+public class BlockBrick extends Breakables {
 
     public static final String BRICK_IMAGE = "resources/brick4.gif";
 
-    private ImageView brickView;
-
     public BlockBrick()
     {
-        try{
-            brickView =new ImageView(new Image(new FileInputStream(BRICK_IMAGE)));
-        }
-        catch(FileNotFoundException e){}
+        super(BRICK_IMAGE);
         //set brick size
-        brickView.setFitWidth(BRICK_WIDTH);
-        brickView.setFitHeight(BRICK_HEIGHT);
+        breakableView.setFitWidth(BRICK_WIDTH);
+        breakableView.setFitHeight(BRICK_HEIGHT);
 
     }
 
     public void setStartLocation(int currentBrick, int numBricks)
     {
-        brickView.setX(BRICK_HEIGHT*currentBrick);
-        brickView.setY(BRICK_WIDTH*currentBrick);
-    }
-    public Node getView(){
-        return brickView;
+        breakableView.setX(BRICK_HEIGHT*currentBrick);
+        breakableView.setY(BRICK_WIDTH*currentBrick);
     }
 
-    public void brickHit(){}
+    //unbreakable so -1 is the amount to break, never able to break
+    public int getAmountToBreak()
+    {
+        return -1;
+    }
+
+    // this brick acts as a wall, so you don't break it.
+    public int getPointValue(){
+        return 0;
+    }
 
 
 }
