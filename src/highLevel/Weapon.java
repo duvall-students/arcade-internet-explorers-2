@@ -29,6 +29,7 @@ public abstract class Weapon {
 
 	public abstract void move();
 	
+	
     public Node getView(){
         return weaponView;
     }
