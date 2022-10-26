@@ -23,8 +23,7 @@ public abstract class Weapon {
             weaponView = new ImageView(new Image(new FileInputStream(image)));
             weaponVelocity = new Point2D(weaponSPEED, weaponSPEED);
         }
-        catch(FileNotFoundException e){}
-	             
+        catch(FileNotFoundException e){}     
 	}
 
 	public abstract void move();
