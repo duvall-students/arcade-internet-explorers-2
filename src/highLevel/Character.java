@@ -1,6 +1,6 @@
 package highLevel;
 
-import java.awt.Image;
+import javafx.scene.image.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
