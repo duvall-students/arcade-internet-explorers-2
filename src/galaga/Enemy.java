@@ -24,7 +24,7 @@ public class Enemy extends Breakables {
         return pointValue;
     }
 
-    public void EnemyHit()
+    public void enemyHit()
     {
         amountToBreak--;
     }
