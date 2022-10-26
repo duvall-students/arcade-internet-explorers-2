@@ -18,6 +18,7 @@ public abstract class Weapon {
 	
 	
 	
+	
 	// similar problem of character. how do we get the view we want?
 	public Weapon(String image) {
         try{
