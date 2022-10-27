@@ -18,7 +18,7 @@ import javafx.util.Duration;
 
 public class PlayGalaga extends Application implements VideoGame {
 	
-	
+	// Trying to commit a change
 	//background and scene setting variables
 		private Scene myScene;
 		public static final int SIZE = 400;
