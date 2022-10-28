@@ -34,7 +34,7 @@ public class Enemy extends Breakables {
     @Override
     //for now, same as brick but will most likely change
     public void setStartLocation(int currentBrick, int numBricks) {
-        breakableView.setX(BRICK_WIDTH*currentBrick);
+        breakableView.setX(BRICK_WIDTH*numBricks);
         breakableView.setY(BRICK_HEIGHT*currentBrick);
     }
 
