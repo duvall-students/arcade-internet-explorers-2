@@ -21,7 +21,7 @@ import highLevel.Breakables;
 import highLevel.Player;
 import highLevel.VideoGame;
 
-public class SettingScene extends Application implements VideoGame{
+public class PlayBreakout extends Application implements VideoGame{
 	
 	//background and scene setting variables
 	private Scene myScene;
