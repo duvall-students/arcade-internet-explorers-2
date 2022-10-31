@@ -22,6 +22,8 @@ public abstract class Breakables {
             breakableView =new ImageView(new Image(new FileInputStream(image)));
         }
         catch(FileNotFoundException e){}
+        breakableView.setFitWidth(BRICK_WIDTH);
+        breakableView.setFitHeight(BRICK_HEIGHT);
     }
 
     public abstract int getAmountToBreak();
@@ -35,4 +37,7 @@ public abstract class Breakables {
     public Node getView(){
         return breakableView;
     }
+
+    public abstract void setStartLocation(int currentBrick, int numBricks);
+
 }

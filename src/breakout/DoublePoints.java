@@ -2,30 +2,19 @@ package breakout;
 
 //Sophie Halish
 
-import javafx.scene.Node;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import highLevel.Breakables;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 public class DoublePoints extends Breakables {
-
-    private ImageView doublePTView;
     private final int pointValue=5;
     private final int amountToBreak=1;
-    private final int START_X=70;
-    private final int START_Y=200;
     private final int SIZE=30;
     private final static String DOUBLEPOINTPOWERUP="resources/pointspower.gif";
 
     public DoublePoints(){
-        try {
-            doublePTView =new ImageView(new Image(new FileInputStream(DOUBLEPOINTPOWERUP)));
-        } catch (FileNotFoundException e) {}
-        doublePTView.setFitWidth(SIZE);
-        doublePTView.setFitHeight(SIZE);
+        super(DOUBLEPOINTPOWERUP);
+        breakableView.setFitWidth(SIZE);
+        breakableView.setFitHeight(SIZE);
     }
 
     @Override
@@ -38,17 +27,15 @@ public class DoublePoints extends Breakables {
         return pointValue;
     }
 
-    public Node getView(){
-        return doublePTView;
-    }
+    @Override
+    public void setStartLocation(int currentBrick, int numBricks){}
 
+    //set random start location based on size
     public void setRandomLocation(int SIZE)
     {
-        doublePTView.setX(getRandomInRange(0,SIZE));
-        doublePTView.setY(getRandomInRange(0,SIZE/2));
+        breakableView.setX(getRandomInRange(0,SIZE));
+        breakableView.setY(getRandomInRange(0,SIZE/2));
     }
 
-    //what happens when it intersects
-    //where do I put it on the screen, you have set locations for the bricks? like in a line
 
 }
