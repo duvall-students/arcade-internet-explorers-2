@@ -49,4 +49,13 @@ public class Enemy extends Breakables {
     public void move(double elapsedTime){
         breakableView.setY(breakableView.getY() + enemyVelocity.getY() * elapsedTime*-1);
     }
+
+    public boolean escapes(double screenWidth, double screenHeight {
+        if(breakableView.getY() > screenHeight - breakableView.getBoundsInLocal().getHeight())
+            //lose life if goes offbottom
+        {
+            return false;
+        }
+        return true;
+    }
 }
