@@ -11,21 +11,19 @@ import java.io.FileInputStream;
 
 public abstract class Weapon {
 	
-	private Point2D weaponVelocity;
-	private final int weaponSPEED = 100;
-	private final int size = 10;
+	protected Point2D weaponVelocity;
+	private final int weaponSpeed = 100;
+	private final int weaponSize = 10;
 	protected ImageView weaponView;
-	
+
 	
 	
 	// similar problem of character. how do we get the view we want?
-	public Weapon(String image) {
-        try{
+	public Weapon(String image) throws FileNotFoundException {
             weaponView = new ImageView(new Image(new FileInputStream(image)));
-            weaponVelocity = new Point2D(weaponSPEED, weaponSPEED);
-        }
-        catch(FileNotFoundException e){}     
+            weaponVelocity = new Point2D(weaponSpeed, weaponSpeed);
 	}
+
 
 	public abstract void move();
 	
