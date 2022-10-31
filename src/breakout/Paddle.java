@@ -12,8 +12,8 @@ public class Paddle extends Character {
     private static final String PADDLE_IMAGE="resources/paddle.gif";
 
 
-    public Paddle(String image) {
-    	super(image);
+    public Paddle() {
+    	super(PADDLE_IMAGE);
         paddleView.setFitHeight(10);
         paddleView.setFitWidth(90);
     }

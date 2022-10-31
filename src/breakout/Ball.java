@@ -1,6 +1,6 @@
 package breakout;
 
-import java.io.FileNotFoundException;
+
 
 //Sophie Halish
 
@@ -18,7 +18,7 @@ public class Ball extends Weapon {
     public static final String BOUNCER_IMAGE = "resources/ball.gif";
 
 
-    public Ball() throws FileNotFoundException{
+    public Ball() {
     	super(BOUNCER_IMAGE);
         // NEW SET SIZE OF 30, CAN BE CHANGED LATER
         ballView.setFitWidth(30);
