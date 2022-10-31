@@ -27,7 +27,7 @@ public abstract class Weapon {
 	}
 
 
-	public abstract void move();
+	public abstract void move(double elapsedTime);
 	
 	
     public Node getView(){
