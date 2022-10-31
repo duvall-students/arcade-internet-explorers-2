@@ -9,6 +9,7 @@ import highLevel.Breakables;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+//Brick for breakout Game
 public class Brick extends Breakables {
     private final int pointValue=1;
     private int amountToBreak;
