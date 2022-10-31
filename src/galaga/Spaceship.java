@@ -10,8 +10,8 @@ public class Spaceship extends Character{
 	private static final String SHIP_IMAGE = "resources/"; // get spaceship image
 	
 	
-	public Spaceship (String image) {
-		super(image);
+	public Spaceship () {
+		super(SHIP_IMAGE);
         shipView.setFitHeight(20);
         shipView.setFitWidth(20);
 		

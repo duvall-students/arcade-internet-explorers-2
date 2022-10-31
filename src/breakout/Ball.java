@@ -18,8 +18,8 @@ public class Ball extends Weapon {
     public static final String BOUNCER_IMAGE = "resources/ball.gif";
 
 
-    public Ball(String image) throws FileNotFoundException{
-    	super(image);
+    public Ball() throws FileNotFoundException{
+    	super(BOUNCER_IMAGE);
         // NEW SET SIZE OF 30, CAN BE CHANGED LATER
         ballView.setFitWidth(30);
         ballView.setFitHeight(30);

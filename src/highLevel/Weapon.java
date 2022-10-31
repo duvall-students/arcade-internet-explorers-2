@@ -19,8 +19,10 @@ public abstract class Weapon {
 	
 	
 	// similar problem of character. how do we get the view we want?
-	public Weapon(String image) throws FileNotFoundException {
-            weaponView = new ImageView(new Image(new FileInputStream(image)));
+	public Weapon(String image){
+            try {
+				weaponView = new ImageView(new Image(new FileInputStream(image)));
+			} catch (FileNotFoundException e) {}
             weaponVelocity = new Point2D(weaponSpeed, weaponSpeed);
 	}
 
