@@ -2,17 +2,19 @@ package galaga;
 
 import highLevel.Breakables;
 import javafx.geometry.Point2D;
+//Sophie Halish
 
+// Enemy class for Galaga Game, similar to Bricks in Breakout
 public class Enemy extends Breakables {
 
     private final int pointValue=1;
     private int amountToBreak;
 
     private Point2D enemyVelocity;
-
+    // enemy will slowly move down the screen
     private static final int ENEMY_SPEED=10;
 
-    public static final String ENEMY_IMAGE="resources/";
+    public static final String ENEMY_IMAGE="resources/enemy.png";
 
     public Enemy(){
         super(ENEMY_IMAGE);
