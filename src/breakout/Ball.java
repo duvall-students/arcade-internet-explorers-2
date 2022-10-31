@@ -1,7 +1,6 @@
 package breakout;
 
 
-
 //Sophie Halish
 
 import highLevel.Weapon;

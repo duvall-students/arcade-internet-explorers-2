@@ -15,7 +15,7 @@ public abstract class Weapon {
 	private final int weaponSpeed = 100;
 	private final int weaponSize = 10;
 	protected ImageView weaponView;
-
+	
 	
 	
 	// similar problem of character. how do we get the view we want?
