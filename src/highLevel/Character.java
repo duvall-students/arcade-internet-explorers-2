@@ -18,7 +18,6 @@ public abstract class Character {
 	private final int SPEED = 40;
 	
 	
-	
 	// possibly might just make this a very basic constructor, update Paddle / SpaceShip as needed
     public Character(String image) {
         try{
