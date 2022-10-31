@@ -2,9 +2,8 @@ package breakout;
 
 //Sophie Halish
 
-import javafx.scene.image.ImageView;
 import highLevel.Breakables;
-
+//Power up for Breakout game, doubles the point if it is hit
 public class DoublePoints extends Breakables {
     private final int pointValue=5;
     private final int amountToBreak=1;
