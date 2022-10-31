@@ -1,14 +1,12 @@
 package galaga;
 
-import java.io.FileNotFoundException;
-
 import highLevel.Weapon;
 import javafx.scene.image.ImageView;
 
 public class Laser extends Weapon {
 	
 	private ImageView laserView;
-    private double elapsedTime;
+
 	private static final String LASER_IMAGE = "resources/";
 	
 	public Laser() {
@@ -18,7 +16,7 @@ public class Laser extends Weapon {
 	
 	}
 	
-	public void move() {
+	public void move(double elapsedTime) {
 		laserView.setY(laserView.getY() + weaponVelocity.getY() * elapsedTime * -1);
 	}
 	

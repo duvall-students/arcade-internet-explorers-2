@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 public class Ball extends Weapon {
     private ImageView ballView;
 
-    private double elapsedTime;
+
     private static final int START_X=200;//subject to change
     private static final int START_Y=345;//subject to change
     public static final String BOUNCER_IMAGE = "resources/ball.gif";
@@ -38,7 +38,7 @@ public class Ball extends Weapon {
     }
 
 
-    public void move() {
+    public void move(double elapsedTime) {
         ballView.setX(ballView.getX() + weaponVelocity.getX() * elapsedTime);
         ballView.setY(ballView.getY() + weaponVelocity.getY() * elapsedTime * -1);
     }

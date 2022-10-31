@@ -183,7 +183,7 @@ public class PlayBreakout extends Application implements VideoGame{
 		//this is not the correct bounds, but basically if it goes past a certain boundry point, I just dont know what H means
 		if (!bounceVariable) {
 			//resets both and bounces
-			userPaddle.resetPaddle();
+			userPaddle.reset();
 			theBall.resetBall();
 			theBall.collision();
 			// player loses life. Problem is that Points/Player is not in this package
@@ -268,7 +268,7 @@ public class PlayBreakout extends Application implements VideoGame{
 
 	public void advanceLevel(int level){
 		theBall.resetBall();
-		userPaddle.resetPaddle();
+		userPaddle.reset();
 		setUpBreakable(level);
 	}
 
