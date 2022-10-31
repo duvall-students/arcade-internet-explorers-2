@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 public class Laser extends Weapon {
 	
 	private ImageView laserView;
+    private double elapsedTime;
 	private static final String LASER_IMAGE = "resources/";
-
 	
 	public Laser() {
 		super(LASER_IMAGE);
@@ -19,7 +19,7 @@ public class Laser extends Weapon {
 	}
 	
 	public void move() {
-		
+		laserView.setY(laserView.getY() + weaponVelocity.getY() * elapsedTime * -1);
 	}
 	
 	public void shoot() {
