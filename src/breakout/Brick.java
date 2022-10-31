@@ -18,9 +18,6 @@ public class Brick extends Breakables {
 
     public Brick(){
         super(BRICK_IMAGE);
-        //set brick size
-        breakableView.setFitWidth(BRICK_WIDTH);
-        breakableView.setFitHeight(BRICK_HEIGHT);
         amountToBreak=1;
     }
 

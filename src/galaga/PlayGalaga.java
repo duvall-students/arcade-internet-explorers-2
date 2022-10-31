@@ -3,6 +3,7 @@ package galaga;
 import java.util.ArrayList;
 import java.util.List;
 
+import breakout.Brick;
 import highLevel.Player;
 import highLevel.VideoGame;
 import javafx.animation.KeyFrame;
@@ -10,6 +11,7 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -32,14 +34,22 @@ public class PlayGalaga extends Application implements VideoGame {
 		public int PLAYERLIVES=3;
 		public int CURRENTSCORE=0;
 		public int HIGHESTSCORE = 0;
+		public int ENEMYAMOUNT=4;
+		private int level=1;
+		private int LASERAMOUNT=6;
 		
 		//instance variables
 		public Player myPlayer=new Player();
+		private Spaceship mySpaceship=new Spaceship();
+		private Laser myLaser=new Laser();
+		
 		
 		//everything in my scene
 		private Group root=new Group();
 		
 		public List<String> allMySayings=new ArrayList<>();
+		public List<Enemy> myEnemies= new ArrayList<>();
+		public List<Laser> myLasers= new ArrayList<>();
 		
 		@Override
 		public void start(Stage stage) {
@@ -73,10 +83,44 @@ public class PlayGalaga extends Application implements VideoGame {
 	    		VARIABLEY=VARIABLEY-20;
 	    	}
 	    	
+	    	//adding in however many enemies wanted
+			for(int i=0;i<level;i++){
+				setUpBreakable(i);
+			}
+			
+			//add lasers into list
+			
+	    	
+	    	
 			//creating a scene with the information
 			Scene scene = new Scene(root, width, height, background);
 			scene.setOnKeyPressed(e -> keyInput(e.getCode()));
 			return scene;
+		}
+		
+		public void setUpBreakable(int level){
+			//adding in however many bricks wanted
+			for(int i=0;i<ENEMYAMOUNT;i++) {
+				Enemy newEnemy = new Enemy();
+				newEnemy.setStartLocation(i, ENEMYAMOUNT * level);
+				myEnemies.add(newEnemy);
+				root.getChildren().add(newEnemy.getView());
+			}
+		}
+		
+		public void keyInput(KeyCode code) {
+			if(code== KeyCode.LEFT)
+			{
+				mySpaceship.move(-1);
+			}
+			else if(code== KeyCode.RIGHT)
+			{
+				mySpaceship.move(1);
+			}
+			if (code== KeyCode.SPACE) {
+				//need a shooting code for laser
+				myLaser.shoot();
+			}
 		}
 		
 		public static void main(String[] args) {
