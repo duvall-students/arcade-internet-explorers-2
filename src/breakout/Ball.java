@@ -8,7 +8,9 @@ import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class Ball {
+import highLevel.Objects;
+
+public class Ball implements Objects{
     private ImageView ballView;
     private Point2D ballVelocity;
     private static final int BOUNCER_SPEED = 100;

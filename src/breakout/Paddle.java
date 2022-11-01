@@ -10,7 +10,9 @@ import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class Paddle {
+import highLevel.Objects;
+
+public class Paddle implements Objects{
 
     private ImageView paddleView;
     private Point2D paddleVelocity;

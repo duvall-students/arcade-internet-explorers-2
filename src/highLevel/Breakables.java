@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 
 //For power-ups and bricks, since they are very similar
-public abstract class Breakables {
+public abstract class Breakables implements Objects{
     protected final int BRICK_WIDTH = 80;
     protected final int BRICK_HEIGHT = 20;
     private Random dice = new Random();
