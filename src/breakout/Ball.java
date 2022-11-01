@@ -1,21 +1,13 @@
 package breakout;
 
-
-//Sophie Halish
-
 import highLevel.Weapon;
 import javafx.geometry.Point2D;
-
-
-
-import highLevel.Objects;
 
 public class Ball extends Weapon{
 
     private static final int START_X=200;//subject to change
     private static final int START_Y=345;//subject to change
     public static final String BOUNCER_IMAGE = "resources/ball.gif";
-
 
     public Ball() {
     	super(BOUNCER_IMAGE);
@@ -48,7 +40,6 @@ public class Ball extends Weapon{
         // collide all bouncers against the walls
         if(weaponView.getY() > screenHeight - weaponView.getBoundsInLocal().getHeight())//lose life if goes offbottom
         {
-            //resetBall();
             return false;
         }
         if (weaponView.getX() < 0 || weaponView.getX() > screenWidth - weaponView.getBoundsInLocal().getWidth()) {

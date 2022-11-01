@@ -17,7 +17,6 @@ public class BlockBrick extends Breakables {
         //set brick size
         breakableView.setFitWidth(BRICK_WIDTH);
         breakableView.setFitHeight(BRICK_HEIGHT);
-
     }
 
     public void setStartLocation(int currentBrick, int numBricks)

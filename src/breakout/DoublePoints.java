@@ -5,7 +5,8 @@ package breakout;
 import highLevel.Breakables;
 //Power up for Breakout game, doubles the point if it is hit
 public class DoublePoints extends Breakables {
-    private final int pointValue=5;
+    
+	private final int pointValue=5;
     private final int amountToBreak=1;
     private final int SIZE=30;
     private final static String DOUBLEPOINTPOWERUP="resources/pointspower.gif";
