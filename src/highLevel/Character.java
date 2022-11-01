@@ -16,8 +16,7 @@ public abstract class Character implements Objects{
 	private final int START_X = 150;
 	private final int START_Y = 375;
 	private final int SPEED = 40;
-	
-	
+
 	
 	// possibly might just make this a very basic constructor, update Paddle / SpaceShip as needed
     public Character(String image) {
