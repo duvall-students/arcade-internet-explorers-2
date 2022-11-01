@@ -57,6 +57,10 @@ public class PlayGalaga extends SettingScene{
 	    		for(Laser thisLaser : myLasers) {
 		    		thisLaser.move(elapsedTime);
 		    	}
+	    		
+	    		for(Enemy thisEnemy : myEnemies) {
+	    			thisEnemy.move(elapsedTime);
+	    		}
 
 	    	
 

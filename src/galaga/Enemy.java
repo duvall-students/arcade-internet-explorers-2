@@ -47,6 +47,6 @@ public class Enemy extends Breakables {
 
     //Want the enemies to slowly move down the screen, so only Y value changes
     public void move(double elapsedTime){
-        breakableView.setY(breakableView.getY() + enemyVelocity.getY() * elapsedTime*-1);
+        breakableView.setY(breakableView.getY() + enemyVelocity.getY() * elapsedTime*1);
     }
 }
