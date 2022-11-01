@@ -11,7 +11,7 @@ import java.io.FileInputStream;
 
 public abstract class Weapon implements Objects{
 	
-	protected Point2D weaponVelocity;
+	public Point2D weaponVelocity;
 	private final int weaponSpeed = 100;
 	private final int weaponSize = 10;
 	public ImageView weaponView;

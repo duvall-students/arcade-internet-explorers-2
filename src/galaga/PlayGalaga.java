@@ -52,9 +52,12 @@ public class PlayGalaga extends SettingScene{
 	    public void step (double elapsedTime) {
 	    	
 	        // updated the lasers
-	    	for(Laser thisLaser : myLasers) {
-	    		thisLaser.move(elapsedTime);
+	    	if (!myLasers.isEmpty()) {
+	    		for(Laser thisLaser : myLasers) {
+		    		thisLaser.move(elapsedTime);
+		    	}
 	    	}
+
 			
 	        // check for collision
 	        // collision(1) means it hit brick, collision(0) means it hit paddle
@@ -66,7 +69,7 @@ public class PlayGalaga extends SettingScene{
 				}
 			}
 
-		}
+		} 
 	    
 		public void advanceLevel(int level){
 			mySpaceship.reset();
@@ -101,12 +104,14 @@ public class PlayGalaga extends SettingScene{
 			{
 				mySpaceship.move(1);
 			}
-			if (code== KeyCode.SPACE) {
+			else if (code== KeyCode.SPACE) {
 				//need a shooting code for laser
+				
 				Laser newLaser=new Laser();
 				newLaser.setStartLocation(mySpaceship.getX(), mySpaceship.getY());
 				myLasers.add(newLaser);
 				root.getChildren().add(newLaser.getView());
+			
 			}
 		}
 		
