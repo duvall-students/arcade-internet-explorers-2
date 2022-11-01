@@ -24,7 +24,7 @@ public class Laser extends Weapon {
 		
 	}
 	
-	public void setStartLocation(int startX, int startY) {
+	public void setStartLocation(double startX, double startY) {
 		laserView.setX(startX);
 		laserView.setY(startY);
 		

@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 
 import highLevel.Objects;
 
-public class Ball extends Weapon implements Objects{
+public class Ball extends Weapon{
 
 
     private ImageView ballView;

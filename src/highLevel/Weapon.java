@@ -9,7 +9,7 @@ import javafx.scene.Node;
 import java.io.FileInputStream;
 
 
-public abstract class Weapon {
+public abstract class Weapon implements Objects{
 	
 	protected Point2D weaponVelocity;
 	private final int weaponSpeed = 100;
