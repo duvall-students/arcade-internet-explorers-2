@@ -22,6 +22,7 @@ import highLevel.Objects;
 import highLevel.Player;
 import highLevel.SettingScene;
 import highLevel.VideoGame;
+import highLevel.Weapon;
 
 public class PlayBreakout extends SettingScene{
 	
