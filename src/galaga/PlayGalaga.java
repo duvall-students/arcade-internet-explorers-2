@@ -27,7 +27,7 @@ public class PlayGalaga extends SettingScene{
 	// Trying to commit a change
 	//background and scene setting variables
 		public static final String TITLE = "Galaga";
-		public int ENEMYAMOUNT=4;
+		public int ENEMYAMOUNT=7;
 		private int LASERAMOUNT=100;
 		
 		//instance variables
@@ -79,7 +79,7 @@ public class PlayGalaga extends SettingScene{
 		} 
 	    
 		private void enemyCollision(Enemy enemy, Laser laser) {
-			enemy.enemyHit();
+			enemy.beenHit();
 
 			if(enemy.getAmountToBreak()==0)
 			{

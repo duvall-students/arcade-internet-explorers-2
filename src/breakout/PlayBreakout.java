@@ -40,7 +40,7 @@ public class PlayBreakout extends SettingScene{
 	//lists of multiple variations
 	public List<Brick> myBricks=new ArrayList<>();;
 	public List<BlockBrick> myBlocks=new ArrayList<>();;
-	public List<Breakables> myPowerUps=new ArrayList<>();;
+	public List<DoublePoints> myPowerUps=new ArrayList<>();;
 	public List<String> allMySayings=new ArrayList<>();
 
 	
@@ -81,7 +81,7 @@ public class PlayBreakout extends SettingScene{
 			}
 		}
 
-		for (Breakables powerUp : myPowerUps)
+		for (DoublePoints powerUp : myPowerUps)
 		{
 			if(theBall.getView().getBoundsInParent().intersects(powerUp.getView().getBoundsInParent()))
 			{
@@ -141,7 +141,7 @@ public class PlayBreakout extends SettingScene{
 	}
 
 	private void brickCollision(Brick brick) {
-		brick.brickHit();
+		brick.beenHit();
 
 		if(brick.getAmountToBreak()==0)
 		{
