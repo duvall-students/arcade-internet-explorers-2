@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 
 import highLevel.Objects;
 
-public class Paddle extends Character implements Objects{
+public class Paddle extends Character{
 
 
     private ImageView paddleView;

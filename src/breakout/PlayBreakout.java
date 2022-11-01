@@ -25,6 +25,7 @@ import highLevel.VideoGame;
 
 public class PlayBreakout extends SettingScene{
 	
+	
 	//background and scene setting variables
 	private int BRICKAMOUNT=5;
 	public static final String TITLE = "Breakout";

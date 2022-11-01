@@ -9,7 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 
-public abstract class Character {
+public abstract class Character implements Objects{
 	
 	private Point2D velocity;
 	protected ImageView characterView;
@@ -42,6 +42,14 @@ public abstract class Character {
     
     public Node getView(){
         return characterView;
+    }
+    
+    public double getX() {
+    	return characterView.getX();
+    }
+    
+    public double getY() {
+    	return characterView.getY();
     }
 
 }
