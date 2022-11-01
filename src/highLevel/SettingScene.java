@@ -52,6 +52,7 @@ public abstract class SettingScene extends Application implements VideoGame{
         stage.show();
         
         //attach game loop
+        myScene.setOnKeyPressed(e -> keyInput(e.getCode()));
         KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> step(SECOND_DELAY));
         Timeline animation = new Timeline();
         animation.setCycleCount(Timeline.INDEFINITE);
