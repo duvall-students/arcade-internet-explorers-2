@@ -14,9 +14,8 @@ public class Spaceship extends Character{
 		super(SHIP_IMAGE);
 		characterView.setFitHeight(20);
 		characterView.setFitWidth(20);
-		
+
 	}
-	
 	
 
 }
