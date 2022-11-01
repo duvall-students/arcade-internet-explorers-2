@@ -7,7 +7,7 @@ public class Laser extends Weapon {
 	
 	private ImageView laserView;
 
-	private static final String LASER_IMAGE = "resources/";
+	private static final String LASER_IMAGE = "resources/laser.png";
 	
 	public Laser() {
 		super(LASER_IMAGE);
