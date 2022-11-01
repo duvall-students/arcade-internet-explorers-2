@@ -18,6 +18,7 @@ public class Laser extends Weapon {
 	
 	public void move(double elapsedTime) {
 		weaponView.setY(weaponView.getY() + weaponVelocity.getY() * elapsedTime * -1);
+
 	}
 	
 	public void shoot() {
