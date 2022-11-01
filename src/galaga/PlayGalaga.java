@@ -28,7 +28,7 @@ public class PlayGalaga extends SettingScene{
 	//background and scene setting variables
 		public static final String TITLE = "Galaga";
 		public int ENEMYAMOUNT=4;
-		private int LASERAMOUNT=6;
+		private int LASERAMOUNT=100;
 		
 		//instance variables
 		public Player myPlayer=new Player();
@@ -44,6 +44,8 @@ public class PlayGalaga extends SettingScene{
 		
 		public void objectsInScene() {
 			myObjects.add(mySpaceship);
+
+			
 			
 		}
 		
@@ -52,11 +54,11 @@ public class PlayGalaga extends SettingScene{
 	    public void step (double elapsedTime) {
 	    	
 	        // updated the lasers
-	    	if (!myLasers.isEmpty()) {
 	    		for(Laser thisLaser : myLasers) {
 		    		thisLaser.move(elapsedTime);
 		    	}
-	    	}
+
+	    	
 
 			
 	        // check for collision
@@ -64,12 +66,31 @@ public class PlayGalaga extends SettingScene{
 			for (Laser thisLaser : myLasers) {
 				for (Enemy thisEnemy : myEnemies) {
 					if (thisLaser.getView().getBoundsInParent().intersects(thisEnemy.getView().getBoundsInParent())) {
-						
+						enemyCollision(thisEnemy,thisLaser);
 					}
 				}
 			}
 
 		} 
+	    
+		private void enemyCollision(Enemy enemy, Laser laser) {
+			enemy.enemyHit();
+
+			if(enemy.getAmountToBreak()==0)
+			{
+				//this works but errors pop up and i am not sure why
+				myEnemies.remove(enemy);
+				root.getChildren().remove(enemy.getView());
+
+				//add to points
+				int enemyValue=enemy.getPointValue();
+				myPlayer.increaseCurrentScore(enemyValue);
+				CURRENTSCORE=myPlayer.getCurrentScore();	
+			}
+			HIGHESTSCORE = myPlayer.getHighScore(CURRENTSCORE);
+			root.getChildren().remove(laser.getView());
+			myLasers.remove(laser);
+		}
 	    
 		public void advanceLevel(int level){
 			mySpaceship.reset();
@@ -85,6 +106,14 @@ public class PlayGalaga extends SettingScene{
 				myEnemies.add(newEnemy);
 				root.getChildren().add(newEnemy.getView());
 			}
+		}
+		
+		public void shootLaser() {
+			Laser newLaser=new Laser();
+			newLaser.setStartLocation(mySpaceship.getX()-10, mySpaceship.getY());
+			newLaser.shoot();
+			myLasers.add(newLaser);
+			root.getChildren().add(newLaser.getView());
 		}
 		
 		public void addPowerUp()
@@ -106,11 +135,7 @@ public class PlayGalaga extends SettingScene{
 			}
 			else if (code== KeyCode.SPACE) {
 				//need a shooting code for laser
-				
-				Laser newLaser=new Laser();
-				newLaser.setStartLocation(mySpaceship.getX(), mySpaceship.getY());
-				myLasers.add(newLaser);
-				root.getChildren().add(newLaser.getView());
+				shootLaser();
 			
 			}
 		}
