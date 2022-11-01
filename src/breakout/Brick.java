@@ -11,11 +11,10 @@ import java.io.FileNotFoundException;
 
 //Brick for breakout Game
 public class Brick extends Breakables {
-    private final int pointValue=1;
-    private int amountToBreak;
-
-    public static final String BRICK_IMAGE = "resources/brick1.gif";
     
+	private final int pointValue=1;
+    private int amountToBreak;
+    public static final String BRICK_IMAGE = "resources/brick1.gif";
 
     public Brick(){
         super(BRICK_IMAGE);
