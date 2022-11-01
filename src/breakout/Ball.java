@@ -5,17 +5,12 @@ package breakout;
 
 import highLevel.Weapon;
 import javafx.geometry.Point2D;
-import javafx.scene.image.ImageView;
 
 
 
 import highLevel.Objects;
 
 public class Ball extends Weapon{
-
-
-   // private ImageView weaponView;
-
 
     private static final int START_X=200;//subject to change
     private static final int START_Y=345;//subject to change
