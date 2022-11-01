@@ -27,7 +27,7 @@ public class PlayGalaga extends SettingScene{
 	// Trying to commit a change
 	//background and scene setting variables
 		public static final String TITLE = "Galaga";
-		public int ENEMYAMOUNT=7;
+		public int ENEMYAMOUNT=6;
 		private int LASERAMOUNT=100;
 		
 		//instance variables
