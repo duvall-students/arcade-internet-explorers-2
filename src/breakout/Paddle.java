@@ -5,8 +5,13 @@ import highLevel.Character;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
-public class Paddle extends Character {
+import highLevel.Objects;
+
+public class Paddle extends Character implements Objects{
+
 
     private ImageView paddleView;
     private static final String PADDLE_IMAGE="resources/paddle.gif";

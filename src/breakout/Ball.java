@@ -8,7 +8,12 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 
 
-public class Ball extends Weapon {
+
+import highLevel.Objects;
+
+public class Ball extends Weapon implements Objects{
+
+
     private ImageView ballView;
 
 

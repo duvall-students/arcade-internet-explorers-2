@@ -18,18 +18,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import highLevel.Breakables;
+import highLevel.Objects;
 import highLevel.Player;
+import highLevel.SettingScene;
 import highLevel.VideoGame;
 
-public class PlayBreakout extends Application implements VideoGame{
+public class PlayBreakout extends SettingScene{
 	
 	//background and scene setting variables
-	private Scene myScene;
-	public static final int SIZE = 400;
-	public static final Paint BACKGROUND = Color.AZURE;
-	public static final int FRAMES_PER_SECOND = 60;
-	public static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
-	public static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private int BRICKAMOUNT=5;
 	public static final String TITLE = "Breakout";
 	public int POINTMULTIPLIER=1;
@@ -44,7 +40,7 @@ public class PlayBreakout extends Application implements VideoGame{
 	public Ball theBall=new Ball();
 	public Brick myBrick;
 	public Paddle userPaddle=new Paddle();
-	public Player myPlayer=new Player();
+	
 	
 	//lists of multiple variations
 	public List<Brick> myBricks=new ArrayList<>();;
@@ -52,70 +48,10 @@ public class PlayBreakout extends Application implements VideoGame{
 	public List<Breakables> myPowerUps=new ArrayList<>();;
 	public List<String> allMySayings=new ArrayList<>();
 
-
-	//everything in my scene
-	private Group root=new Group();
 	
-	//is this needed since I only edit root here?
-	public Group getRoot() {
-		return root;
-	}
-
-	//same question as above
-	public List<Brick> getMyBricks() {
-		return myBricks;
-	}
-
-
-	@Override
-	public void start(Stage stage) {
-		//attach scene to stage and display it
-		myScene=setUp(SIZE,SIZE,BACKGROUND);
-		stage.setScene(myScene);
-        stage.setTitle(TITLE);
-        stage.show();
-        
-        //attach game loop
-        KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> step(SECOND_DELAY));
-        Timeline animation = new Timeline();
-        animation.setCycleCount(Timeline.INDEFINITE);
-        animation.getKeyFrames().add(frame);
-        animation.play();
-	}
-	
-	
-	public Scene setUp(int width, int height, Paint background) {
-		//create all my sayings and add them to the list
-    	allMySayings.add("Lives Left: "+PLAYERLIVES);
-    	allMySayings.add("Current Points: "+CURRENTSCORE);
-    	allMySayings.add("Highest Score: "+ myPlayer.getHighScore(CURRENTSCORE));
-    	
-    	//run through all the strings and add them
-    	for (String screenText : allMySayings) {
-    		Text text=new Text();
-    		text.setText(screenText);
-    		text.setX(variableX);
-    		text.setY(variableY);
-    		root.getChildren().add(text);
-    		variableY=variableY-20;
-    	}
-		
-		//adding the ball to the collection
-		root.getChildren().add(theBall.getView());
-		
-		//adding the paddle to the view
-		root.getChildren().add(userPaddle.getView());
-
-		//adding in however many bricks wanted
-		for(int i=0;i<level;i++){
-			setUpBreakable(i);
-		}
-		
-		
-		//creating a scene with the information
-		Scene scene = new Scene(root, width, height, background);
-		scene.setOnKeyPressed(e -> keyInput(e.getCode()));
-		return scene;
+	public void objectsInScene() {
+		myObjects.add(theBall);
+		myObjects.add(userPaddle);
 	}
 	
 	
