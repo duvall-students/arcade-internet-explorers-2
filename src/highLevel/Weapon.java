@@ -9,12 +9,12 @@ import javafx.scene.Node;
 import java.io.FileInputStream;
 
 
-public abstract class Weapon {
+public abstract class Weapon implements Objects{
 	
-	protected Point2D weaponVelocity;
+	public Point2D weaponVelocity;
 	private final int weaponSpeed = 100;
 	private final int weaponSize = 10;
-	protected ImageView weaponView;
+	public ImageView weaponView;
 	
 	
 	
@@ -24,6 +24,7 @@ public abstract class Weapon {
 				weaponView = new ImageView(new Image(new FileInputStream(image)));
 			} catch (FileNotFoundException e) {}
             weaponVelocity = new Point2D(weaponSpeed, weaponSpeed);
+     
 	}
 
 

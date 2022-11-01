@@ -6,14 +6,15 @@ import javafx.scene.image.ImageView;
 
 public class Spaceship extends Character{
 	
-	private ImageView shipView;
-	private static final String SHIP_IMAGE = "resources/spaceship.png"; // get spaceship image
+	//private ImageView shipView;
+	public static final String SHIP_IMAGE = "resources/spaceship.png"; // get spaceship image
 	
 	
 	public Spaceship () {
 		super(SHIP_IMAGE);
-        shipView.setFitHeight(20);
-        shipView.setFitWidth(20);
+		characterView.setFitHeight(20);
+		characterView.setFitWidth(20);
+
 	}
 	
 

@@ -22,8 +22,10 @@ import highLevel.Objects;
 import highLevel.Player;
 import highLevel.SettingScene;
 import highLevel.VideoGame;
+import highLevel.Weapon;
 
 public class PlayBreakout extends SettingScene{
+	
 	
 	//background and scene setting variables
 	private int BRICKAMOUNT=5;

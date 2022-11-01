@@ -36,8 +36,8 @@ public class Enemy extends Breakables {
     @Override
     //for now, same as brick but will most likely change
     public void setStartLocation(int currentBrick, int numBricks) {
-        breakableView.setX(BRICK_WIDTH*numBricks);
-        breakableView.setY(BRICK_HEIGHT*currentBrick);
+        breakableView.setX(BRICK_WIDTH*currentBrick);
+        breakableView.setY(BRICK_HEIGHT*numBricks);
     }
 
     public void enemyHit()
@@ -47,6 +47,6 @@ public class Enemy extends Breakables {
 
     //Want the enemies to slowly move down the screen, so only Y value changes
     public void move(double elapsedTime){
-        breakableView.setY(breakableView.getY() + enemyVelocity.getY() * elapsedTime*-1);
+        breakableView.setY(breakableView.getY() + enemyVelocity.getY() * elapsedTime*1);
     }
 }
