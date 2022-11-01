@@ -9,13 +9,14 @@ import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 
-public abstract class Character {
+public abstract class Character implements Objects{
 	
 	private Point2D velocity;
 	protected ImageView characterView;
 	private final int START_X = 150;
 	private final int START_Y = 375;
 	private final int SPEED = 40;
+	
 	
 	
 	// possibly might just make this a very basic constructor, update Paddle / SpaceShip as needed
@@ -41,6 +42,14 @@ public abstract class Character {
     
     public Node getView(){
         return characterView;
+    }
+    
+    public double getX() {
+    	return characterView.getX();
+    }
+    
+    public double getY() {
+    	return characterView.getY();
     }
 
 }

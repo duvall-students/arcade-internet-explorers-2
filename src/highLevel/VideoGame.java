@@ -11,6 +11,7 @@ public interface VideoGame {
 	public void keyInput(KeyCode code);
 	public void addPowerUp();
 	public void setUpBreakable(int level);
+	//public void handleCollision();
 	
 
 }

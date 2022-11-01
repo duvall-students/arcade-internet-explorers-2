@@ -9,13 +9,13 @@ import javafx.scene.Node;
 import java.io.FileInputStream;
 
 
-public abstract class Weapon {
+public abstract class Weapon implements Objects{
 	
-	protected Point2D weaponVelocity;
+	public Point2D weaponVelocity;
 	private final int weaponSpeed = 100;
 	private final int weaponSize = 10;
-	protected ImageView weaponView;
-
+	public ImageView weaponView;
+	
 	
 	
 	// similar problem of character. how do we get the view we want?
@@ -24,10 +24,11 @@ public abstract class Weapon {
 				weaponView = new ImageView(new Image(new FileInputStream(image)));
 			} catch (FileNotFoundException e) {}
             weaponVelocity = new Point2D(weaponSpeed, weaponSpeed);
+     
 	}
 
 
-	public abstract void move();
+	public abstract void move(double elapsedTime);
 	
 	
     public Node getView(){
