@@ -52,23 +52,26 @@ public class PlayGalaga extends SettingScene{
 		
 		// Change properties of shapes in small ways to animate them over time
 	    public void step (double elapsedTime) {
-	    	
 	        // updated the lasers
-	    		for(Laser thisLaser : myLasers) {
-		    		thisLaser.move(elapsedTime);
-		    	}
-	    		
-	    		for(Enemy thisEnemy : myEnemies) {
-	    			thisEnemy.move(elapsedTime);
-					//check to see if enemy has gotten to the bottom
-					if (thisEnemy.escapes(SIZE)) {
-						myPlayer.loseLife();
-						myEnemies.remove(thisEnemy);
-						root.getChildren().remove(thisEnemy.getView());
-					}
-	    		}
-
-			
+			for(Laser thisLaser : myLasers) {
+				thisLaser.move(elapsedTime);
+			}
+			for(Enemy thisEnemy : myEnemies) {
+				thisEnemy.move(elapsedTime);
+				//check to see if enemy has gotten to the bottom
+				if (thisEnemy.escapes(SIZE)) {
+					myEnemies.remove(thisEnemy);
+					root.getChildren().remove(thisEnemy.getView());
+					myPlayer.loseLife();
+					PLAYERLIVES=myPlayer.getLifeAmount();
+					Text text=new Text();
+					String welcome="Lives Left: "+PLAYERLIVES;
+					text.setText(welcome);
+					text.setX(10);
+					text.setY(390);
+					root.getChildren().set(0, text);
+				}
+			}
 	        // check for collision
 			for (Laser thisLaser : myLasers) {
 				for (Enemy thisEnemy : myEnemies) {
@@ -106,7 +109,7 @@ public class PlayGalaga extends SettingScene{
 
 		
 		public void setUpBreakable(int level){
-			//adding in however many bricks wanted
+			//adding in however many enemies wanted
 			for(int i=0;i<ENEMYAMOUNT;i++) {
 				Enemy newEnemy = new Enemy();
 				newEnemy.setStartLocation(i, ENEMYAMOUNT * level);
@@ -122,15 +125,7 @@ public class PlayGalaga extends SettingScene{
 			myLasers.add(newLaser);
 			root.getChildren().add(newLaser.getView());
 		}
-		
-		public void addPowerUp()
-		{
-//			DoublePoints powerupDP=new DoublePoints();
-//			powerupDP.setRandomLocation(SIZE);
-//			myPowerUps.add(powerupDP);
-//			root.getChildren().add(powerupDP.getView());
-		}
-		
+
 		public void keyInput(KeyCode code) {
 			if(code== KeyCode.LEFT)
 			{
