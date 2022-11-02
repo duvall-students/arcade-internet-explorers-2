@@ -6,16 +6,16 @@ import javafx.geometry.Point2D;
 
 // Enemy class for Galaga Game, similar to Bricks in Breakout
 public class Enemy extends Breakables {
-    public static final int ENEMY_CENTERING = 75;
-    public static final int POINTS_VALUE = 1;
-    public static final int BREAK_AMOUNT = 1;
-    protected final int ENEMY_WIDTH = 40;
-    protected final int ENEMY_HEIGHT = 40;
+    private static final int ENEMY_CENTERING = 75; //makes the enemys centered on the screen
+    private static final int POINTS_VALUE = 1;
+    private static final int BREAK_AMOUNT = 1;
+    private final int ENEMY_WIDTH = 40;
+    private final int ENEMY_HEIGHT = 40;
     private Point2D enemyVelocity;
     // enemy will slowly move down the screen
     private static final int ENEMY_SPEED=1;
 
-    public static final String ENEMY_IMAGE="resources/enemy.png";
+    private static final String ENEMY_IMAGE="resources/enemy.png";
 
     public Enemy(){
         super(ENEMY_IMAGE, POINTS_VALUE, BREAK_AMOUNT);

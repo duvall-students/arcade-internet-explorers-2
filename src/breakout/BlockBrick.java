@@ -4,8 +4,8 @@ import highLevel.Hittable;
 
 public class BlockBrick extends Hittable {
 
-    public static final String BRICK_IMAGE = "resources/brick4.gif";
-    public static final int POINTS_VALUE = 0;
+    private static final int POINTS_VALUE = 0;
+    private static final String BRICK_IMAGE = "resources/brick4.gif";
 
     public BlockBrick()
     {
