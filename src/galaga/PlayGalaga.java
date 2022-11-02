@@ -47,13 +47,16 @@ public class PlayGalaga extends SettingScene{
 				if (thisEnemy.escapes(SIZE)) {
 					myEnemies.remove(thisEnemy);
 					root.getChildren().remove(thisEnemy.getView());
+				}
+				
+				if (!myEnemies.contains(thisEnemy)) {
 					myPlayer.loseLife();
 					PLAYERLIVES=myPlayer.getLifeAmount();
 					Text text=new Text();
 					String welcome="Lives Left: "+PLAYERLIVES;
 					text.setText(welcome);
-					text.setX(10);
-					text.setY(390);
+					text.setX(VARIABLEX);
+					text.setY(VARIABLEY);
 					root.getChildren().set(0, text);
 				}
 			}
@@ -62,6 +65,13 @@ public class PlayGalaga extends SettingScene{
 				for (Enemy thisEnemy : myEnemies) {
 					if (thisLaser.getView().getBoundsInParent().intersects(thisEnemy.getView().getBoundsInParent())) {
 						enemyCollision(thisEnemy,thisLaser);
+						//print it
+						Text text2=new Text();
+				    	String currentPoints="Current Points: "+currentScore;
+				    	text2.setText(currentPoints);
+				    	text2.setX(10);
+				    	text2.setY(370);
+				    	root.getChildren().set(1,text2);
 					}
 				}
 			}
@@ -73,6 +83,11 @@ public class PlayGalaga extends SettingScene{
 			text.setX(200);
 			text.setY(200);
 			root.getChildren().add(text);
+	    	}
+	    	
+	    	if (myEnemies.isEmpty() && PLAYERLIVES>0) {
+	    		advanceLevel(level+1);
+	    		level=level+1;
 	    	}
 			
 
