@@ -6,7 +6,7 @@ import javafx.geometry.Point2D;
 
 // Enemy class for Galaga Game, similar to Bricks in Breakout
 public class Enemy extends Breakables {
-    private static final int ENEMY_CENTERING = 75; //makes the enemys centered on the screen
+    private static final int ENEMY_CENTERING = 75; //makes the enemies centered on the screen
     private static final int POINTS_VALUE = 1;
     private static final int BREAK_AMOUNT = 1;
     private final int ENEMY_WIDTH = 40;

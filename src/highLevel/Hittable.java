@@ -8,13 +8,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
+//Sophie Halish
+//super class for elements that can be hit but not necessarily broken
+//have point value
 public abstract class Hittable implements Objects{
 
     protected final int BRICK_WIDTH = 80;
     protected final int BRICK_HEIGHT = 20;
     protected int pointValue;
     protected ImageView hittableView;
-
     private Random dice = new Random();
 
 
