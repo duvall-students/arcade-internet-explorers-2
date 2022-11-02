@@ -3,79 +3,63 @@ package galaga;
 import java.util.ArrayList;
 import java.util.List;
 
-import breakout.BlockBrick;
-import breakout.Brick;
-import breakout.DoublePoints;
-import highLevel.Breakables;
 import highLevel.Player;
 import highLevel.SettingScene;
-import highLevel.VideoGame;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class PlayGalaga extends SettingScene{
 	
 	// Trying to commit a change
 	//background and scene setting variables
-		public static final String TITLE = "Galaga";
-		public int ENEMYAMOUNT=6;
+		private static final String TITLE = "Galaga";
+		private int ENEMYAMOUNT=6;
 		private int LASERAMOUNT=100;
-		
 		//instance variables
-		public Player myPlayer=new Player();
-		public Spaceship mySpaceship=new Spaceship();
-		public Laser myLaser=new Laser();
+		private Player myPlayer=new Player();
+		private Spaceship mySpaceship=new Spaceship();
+		private Laser myLaser=new Laser();
 		
 		
 		
 		
 		public List<String> allMySayings=new ArrayList<>();
-		public List<Enemy> myEnemies= new ArrayList<>();
-		public List<Laser> myLasers= new ArrayList<>();
+		private List<Enemy> myEnemies= new ArrayList<>();
+		private List<Laser> myLasers= new ArrayList<>();
 		
 		public void objectsInScene() {
 			myObjects.add(mySpaceship);
-
-			
 			
 		}
 		
 		
 		// Change properties of shapes in small ways to animate them over time
 	    public void step (double elapsedTime) {
-	    	
 	        // updated the lasers
-	    		for(Laser thisLaser : myLasers) {
-		    		thisLaser.move(elapsedTime);
-		    	}
-	    		
-	    		for(Enemy thisEnemy : myEnemies) {
-	    			thisEnemy.move(elapsedTime);
-	    		}
-
-	    	
-
-			
+			for(Laser thisLaser : myLasers) {
+				thisLaser.move(elapsedTime);
+			}
+			for(Enemy thisEnemy : myEnemies) {
+				thisEnemy.move(elapsedTime);
+				//check to see if enemy has gotten to the bottom
+				if (thisEnemy.escapes(SIZE)) {
+					myEnemies.remove(thisEnemy);
+					root.getChildren().remove(thisEnemy.getView());
+					myPlayer.loseLife();
+					PLAYERLIVES=myPlayer.getLifeAmount();
+					Text text=new Text();
+					String welcome="Lives Left: "+PLAYERLIVES;
+					text.setText(welcome);
+					text.setX(10);
+					text.setY(390);
+					root.getChildren().set(0, text);
+				}
+			}
 	        // check for collision
-	        // collision(1) means it hit brick, collision(0) means it hit paddle
 			for (Laser thisLaser : myLasers) {
 				for (Enemy thisEnemy : myEnemies) {
 					if (thisLaser.getView().getBoundsInParent().intersects(thisEnemy.getView().getBoundsInParent())) {
 						enemyCollision(thisEnemy,thisLaser);
-					}
-					if (thisEnemy.escapes(SIZE)) {
-						myEnemies.remove(thisEnemy);
-						root.getChildren().remove(thisEnemy.getView());
-						myPlayer.loseLife();
 					}
 				}
 			}
@@ -94,9 +78,9 @@ public class PlayGalaga extends SettingScene{
 				//add to points
 				int enemyValue=enemy.getPointValue();
 				myPlayer.increaseCurrentScore(enemyValue);
-				CURRENTSCORE=myPlayer.getCurrentScore();	
+				currentScore =myPlayer.getCurrentScore();
 			}
-			HIGHESTSCORE = myPlayer.getHighScore(CURRENTSCORE);
+			highestScore = myPlayer.getHighScore(currentScore);
 			root.getChildren().remove(laser.getView());
 			myLasers.remove(laser);
 		}
@@ -108,7 +92,7 @@ public class PlayGalaga extends SettingScene{
 
 		
 		public void setUpBreakable(int level){
-			//adding in however many bricks wanted
+			//adding in however many enemies wanted
 			for(int i=0;i<ENEMYAMOUNT;i++) {
 				Enemy newEnemy = new Enemy();
 				newEnemy.setStartLocation(i, ENEMYAMOUNT * level);
@@ -124,15 +108,7 @@ public class PlayGalaga extends SettingScene{
 			myLasers.add(newLaser);
 			root.getChildren().add(newLaser.getView());
 		}
-		
-		public void addPowerUp()
-		{
-//			DoublePoints powerupDP=new DoublePoints();
-//			powerupDP.setRandomLocation(SIZE);
-//			myPowerUps.add(powerupDP);
-//			root.getChildren().add(powerupDP.getView());
-		}
-		
+
 		public void keyInput(KeyCode code) {
 			if(code== KeyCode.LEFT)
 			{

@@ -1,4 +1,5 @@
 package highLevel;
+// Sibel Tanik
 
 import javafx.scene.image.Image;
 import java.io.FileInputStream;
@@ -18,7 +19,6 @@ public abstract class Character implements Objects{
 	private final int SPEED = 40;
 
 	
-	// possibly might just make this a very basic constructor, update Paddle / SpaceShip as needed
     public Character(String image) {
         try{
             characterView=new ImageView(new Image(new FileInputStream(image)));

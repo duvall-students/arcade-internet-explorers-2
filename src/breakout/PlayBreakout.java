@@ -25,23 +25,23 @@ public class PlayBreakout extends SettingScene{
 	
 	//background and scene setting variables
 	private int BRICKAMOUNT=5;
-	public static final String TITLE = "Breakout";
-	public int POINTMULTIPLIER=1;
-	public int PLAYERLIVES=3;
-	public int CURRENTSCORE=0;
-	public int HIGHESTSCORE = 0;
+	private static final String TITLE = "Breakout";
+	private int POINTMULTIPLIER=1;
+	private int PLAYERLIVES=3;
+	private int CURRENTSCORE=0;
+	private int HIGHESTSCORE = 0;
 	private int level=1;
 
 	//instance variables for the game
-	public Ball theBall=new Ball();
-	public Brick myBrick;
-	public Paddle userPaddle=new Paddle();
+	private Ball theBall=new Ball();
+	private Brick myBrick;
+	private Paddle userPaddle=new Paddle();
 	
 	//lists of multiple variations
-	public List<Brick> myBricks=new ArrayList<>();;
-	public List<BlockBrick> myBlocks=new ArrayList<>();;
-	public List<DoublePoints> myPowerUps=new ArrayList<>();;
-	public List<String> allMySayings=new ArrayList<>();
+	private List<Brick> myBricks=new ArrayList<>();;
+	private List<BlockBrick> myBlocks=new ArrayList<>();;
+	private List<DoublePoints> myPowerUps=new ArrayList<>();;
+	private List<String> allMySayings=new ArrayList<>();
 
 	
 	public void objectsInScene() {
@@ -172,7 +172,7 @@ public class PlayBreakout extends SettingScene{
 		}
 	}
 
-	public void addHardBrick(int level)
+	private void addHardBrick(int level)
 	{
 		BlockBrick hardBrick=new BlockBrick();
 		hardBrick.setStartLocation(level,BRICKAMOUNT);
@@ -180,7 +180,7 @@ public class PlayBreakout extends SettingScene{
 		root.getChildren().add(hardBrick.getView());
 	}
 
-	public void addPowerUp()
+	private void addPowerUp()
 	{
 		DoublePoints powerupDP=new DoublePoints();
 		powerupDP.setRandomLocation(SIZE);

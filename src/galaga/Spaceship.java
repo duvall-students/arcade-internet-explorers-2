@@ -1,5 +1,7 @@
 package galaga;
 
+// Sibel Tanik
+
 import highLevel.Character;
 import javafx.scene.image.ImageView;
 
