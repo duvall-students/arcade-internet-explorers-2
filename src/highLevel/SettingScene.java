@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+//maddie volchko
 public abstract class SettingScene extends Application implements VideoGame{
 	//everything in my scene
 	public Group root=new Group();
@@ -52,12 +53,14 @@ public abstract class SettingScene extends Application implements VideoGame{
         stage.show();
         
         //attach game loop
+        
         myScene.setOnKeyPressed(e -> keyInput(e.getCode()));
         KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> step(SECOND_DELAY));
         Timeline animation = new Timeline();
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.getKeyFrames().add(frame);
         animation.play();
+        
 	}
 	
 	public Scene setUp(int width, int height, Paint background) {

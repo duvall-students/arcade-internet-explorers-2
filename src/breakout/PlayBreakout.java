@@ -20,6 +20,7 @@ import highLevel.SettingScene;
 import highLevel.VideoGame;
 import highLevel.Weapon;
 
+//maddie volchko
 public class PlayBreakout extends SettingScene{
 	
 	
@@ -180,7 +181,7 @@ public class PlayBreakout extends SettingScene{
 		root.getChildren().add(hardBrick.getView());
 	}
 
-	private void addPowerUp()
+	public void addPowerUp()
 	{
 		DoublePoints powerupDP=new DoublePoints();
 		powerupDP.setRandomLocation(SIZE);
