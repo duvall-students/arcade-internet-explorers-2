@@ -26,21 +26,21 @@ public class PlayGalaga extends SettingScene{
 	
 	// Trying to commit a change
 	//background and scene setting variables
-		public static final String TITLE = "Galaga";
-		public int ENEMYAMOUNT=6;
+		private static final String TITLE = "Galaga";
+		private int ENEMYAMOUNT=6;
 		private int LASERAMOUNT=100;
 		
 		//instance variables
-		public Player myPlayer=new Player();
-		public Spaceship mySpaceship=new Spaceship();
-		public Laser myLaser=new Laser();
+		private Player myPlayer=new Player();
+		private Spaceship mySpaceship=new Spaceship();
+		private Laser myLaser=new Laser();
 		
 		
 		
 		
 		public List<String> allMySayings=new ArrayList<>();
-		public List<Enemy> myEnemies= new ArrayList<>();
-		public List<Laser> myLasers= new ArrayList<>();
+		private List<Enemy> myEnemies= new ArrayList<>();
+		private List<Laser> myLasers= new ArrayList<>();
 		
 		public void objectsInScene() {
 			myObjects.add(mySpaceship);
