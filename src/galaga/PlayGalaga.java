@@ -72,7 +72,11 @@ public class PlayGalaga extends SettingScene{
 					if (thisLaser.getView().getBoundsInParent().intersects(thisEnemy.getView().getBoundsInParent())) {
 						enemyCollision(thisEnemy,thisLaser);
 					}
-					if (thisEnemy.getView().getBoundsInParent()))
+					if (thisEnemy.escapes(SIZE)) {
+						myEnemies.remove(thisEnemy);
+						root.getChildren().remove(thisEnemy.getView());
+						myPlayer.loseLife();
+					}
 				}
 			}
 
