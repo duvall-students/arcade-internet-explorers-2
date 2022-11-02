@@ -13,7 +13,7 @@ public class Enemy extends Breakables {
     private final int ENEMY_HEIGHT = 40;
     private Point2D enemyVelocity;
     // enemy will slowly move down the screen
-    private static final int ENEMY_SPEED=1;
+    private static final int ENEMY_SPEED=10;
 
     private static final String ENEMY_IMAGE="resources/enemy.png";
 
@@ -33,11 +33,11 @@ public class Enemy extends Breakables {
 
     //Want the enemies to slowly move down the screen, so only Y value changes
     public void move(double elapsedTime){
-        hittableView.setY(hittableView.getY() + enemyVelocity.getY() * elapsedTime*20);
+        hittableView.setY(hittableView.getY() + enemyVelocity.getY() * elapsedTime);
     }
 
     //checks if it went off the bottom
     public boolean escapes(double screenHeight){
-        return !(hittableView.getY() > screenHeight - hittableView.getBoundsInLocal().getHeight());
+        return !(hittableView.getY() < screenHeight - hittableView.getBoundsInLocal().getHeight());
     }
 }

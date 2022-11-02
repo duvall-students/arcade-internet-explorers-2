@@ -60,22 +60,20 @@ public class PlayGalaga extends SettingScene{
 	    		
 	    		for(Enemy thisEnemy : myEnemies) {
 	    			thisEnemy.move(elapsedTime);
+					//check to see if enemy has gotten to the bottom
+					if (thisEnemy.escapes(SIZE)) {
+						myPlayer.loseLife();
+						myEnemies.remove(thisEnemy);
+						root.getChildren().remove(thisEnemy.getView());
+					}
 	    		}
-
-	    	
 
 			
 	        // check for collision
-	        // collision(1) means it hit brick, collision(0) means it hit paddle
 			for (Laser thisLaser : myLasers) {
 				for (Enemy thisEnemy : myEnemies) {
 					if (thisLaser.getView().getBoundsInParent().intersects(thisEnemy.getView().getBoundsInParent())) {
 						enemyCollision(thisEnemy,thisLaser);
-					}
-					if (thisEnemy.escapes(SIZE)) {
-						myEnemies.remove(thisEnemy);
-						root.getChildren().remove(thisEnemy.getView());
-						myPlayer.loseLife();
 					}
 				}
 			}
