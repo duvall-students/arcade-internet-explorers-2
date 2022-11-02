@@ -3,37 +3,26 @@ package breakout;
 //Sophie Halish
 
 import highLevel.Breakables;
+import highLevel.Hittable;
+
 //Power up for Breakout game, doubles the point if it is hit
-public class DoublePoints extends Breakables {
-    private final int pointValue=5;
-    private final int amountToBreak=1;
+public class DoublePoints extends Hittable {
+
+    private static final int POINT_VALUE = 5;
     private final int SIZE=30;
     private final static String DOUBLEPOINTPOWERUP="resources/pointspower.gif";
 
-    public DoublePoints(){
-        super(DOUBLEPOINTPOWERUP);
-        breakableView.setFitWidth(SIZE);
-        breakableView.setFitHeight(SIZE);
+    public DoublePoints() {
+        super(DOUBLEPOINTPOWERUP, POINT_VALUE);
+        hittableView.setFitWidth(SIZE);
+        hittableView.setFitHeight(SIZE);
     }
-
-    @Override
-    public int getAmountToBreak() {
-        return amountToBreak;
-    }
-
-    @Override
-    public int getPointValue() {
-        return pointValue;
-    }
-
-    @Override
-    public void setStartLocation(int currentBrick, int numBricks){}
 
     //set random start location based on size
-    public void setRandomLocation(int SIZE)
+    public void setRandomLocation(int screenSize)
     {
-        breakableView.setX(getRandomInRange(0,SIZE));
-        breakableView.setY(getRandomInRange(0,SIZE/2));
+        hittableView.setX(getRandomInRange(0,screenSize));
+        hittableView.setY(getRandomInRange(0,screenSize/2));
     }
 
 

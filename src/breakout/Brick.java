@@ -11,38 +11,23 @@ import java.io.FileNotFoundException;
 
 //Brick for breakout Game
 public class Brick extends Breakables {
-    private final int pointValue=1;
-    private int amountToBreak;
-
+    public static final int POINTS_VALUE = 1;
+    public static final int BREAK_AMOUNT = 1;
     public static final String BRICK_IMAGE = "resources/brick1.gif";
-    
 
     public Brick(){
-        super(BRICK_IMAGE);
-        amountToBreak=1;
-    }
-
-    public int getPointValue()
-    {
-        return pointValue;
-    }
-
-    public int getAmountToBreak()
-    {
-        return amountToBreak;
-    }
-
-    public void brickHit(){
-        amountToBreak--;
+        super(BRICK_IMAGE, POINTS_VALUE, BREAK_AMOUNT);
+        //amountToBreak=1;
+        hittableView.setFitWidth(BRICK_WIDTH);
+        hittableView.setFitHeight(BRICK_HEIGHT);
     }
 
     //set brick location
-    //set width and height
-    //screen size is 400 by 400
+    //diagonal along the screen
     public void setStartLocation(int currentBrick, int numBricks)
     {
-            breakableView.setX(BRICK_WIDTH*currentBrick);
-            breakableView.setY(BRICK_HEIGHT*(currentBrick+(numBricks/5)));
+            hittableView.setX(BRICK_WIDTH*currentBrick);
+            hittableView.setY(BRICK_HEIGHT*(currentBrick+(numBricks/5)));
     }
 
 }

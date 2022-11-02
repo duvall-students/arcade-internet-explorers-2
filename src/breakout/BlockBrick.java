@@ -1,41 +1,21 @@
 package breakout;
 //Sophie Halish
-import highLevel.Breakables;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import highLevel.Hittable;
 
-public class BlockBrick extends Breakables {
+public class BlockBrick extends Hittable {
 
     public static final String BRICK_IMAGE = "resources/brick4.gif";
+    public static final int POINTS_VALUE = 0;
 
     public BlockBrick()
     {
-        super(BRICK_IMAGE);
-        //set brick size
-        breakableView.setFitWidth(BRICK_WIDTH);
-        breakableView.setFitHeight(BRICK_HEIGHT);
-
+        super(BRICK_IMAGE, POINTS_VALUE);
     }
 
     public void setStartLocation(int currentBrick, int numBricks)
     {
-        breakableView.setX(BRICK_HEIGHT*currentBrick);
-        breakableView.setY(BRICK_WIDTH*currentBrick);
+        hittableView.setX(BRICK_HEIGHT*currentBrick);
+        hittableView.setY(BRICK_WIDTH*currentBrick);
     }
-
-    //unbreakable so -1 is the amount to break, never able to break
-    public int getAmountToBreak()
-    {
-        return -1;
-    }
-
-    // this brick acts as a wall, so you don't break it.
-    public int getPointValue(){
-        return 0;
-    }
-
 
 }

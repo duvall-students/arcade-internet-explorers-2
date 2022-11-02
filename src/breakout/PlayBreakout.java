@@ -1,11 +1,7 @@
 package breakout;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -35,19 +31,16 @@ public class PlayBreakout extends SettingScene{
 	public int CURRENTSCORE=0;
 	public int HIGHESTSCORE = 0;
 	private int level=1;
-	private int variableX=10;
-	private int variableY=390;
 
 	//instance variables for the game
 	public Ball theBall=new Ball();
 	public Brick myBrick;
 	public Paddle userPaddle=new Paddle();
 	
-	
 	//lists of multiple variations
 	public List<Brick> myBricks=new ArrayList<>();;
 	public List<BlockBrick> myBlocks=new ArrayList<>();;
-	public List<Breakables> myPowerUps=new ArrayList<>();;
+	public List<DoublePoints> myPowerUps=new ArrayList<>();;
 	public List<String> allMySayings=new ArrayList<>();
 
 	
@@ -88,7 +81,7 @@ public class PlayBreakout extends SettingScene{
 			}
 		}
 
-		for (Breakables powerUp : myPowerUps)
+		for (DoublePoints powerUp : myPowerUps)
 		{
 			if(theBall.getView().getBoundsInParent().intersects(powerUp.getView().getBoundsInParent()))
 			{
@@ -99,7 +92,7 @@ public class PlayBreakout extends SettingScene{
 			}
 		}
 		if (myBricks.isEmpty()) {
-//			onLevelOne=false;
+
 			level++;
 			//message about new level
 			Text restart=new Text();
@@ -109,7 +102,7 @@ public class PlayBreakout extends SettingScene{
 			restart.setY(100);
 			root.getChildren().add(restart);
 			advanceLevel(level);
-			//locationOfMessage=root.getChildren().indexOf(restart);
+			
 			root.getChildren().remove(restart);
 			//restart if clicked	
 		}
@@ -148,11 +141,10 @@ public class PlayBreakout extends SettingScene{
 	}
 
 	private void brickCollision(Brick brick) {
-		brick.brickHit();
+		brick.beenHit();
 
 		if(brick.getAmountToBreak()==0)
 		{
-			//this works but errors pop up and i am not sure why
 			myBricks.remove(brick);
 			root.getChildren().remove(brick.getView());
 
@@ -196,13 +188,6 @@ public class PlayBreakout extends SettingScene{
 		root.getChildren().add(powerupDP.getView());
 	}
  
-//    private void handleMouseInput () {
-//    	//root.getChildren().clear();
-//		if(myBricks.isEmpty())
-//		{
-//			setUpBricks(level);
-//		}
-//    }
 
 	public void advanceLevel(int level){
 		theBall.resetBall();
@@ -222,8 +207,6 @@ public class PlayBreakout extends SettingScene{
 	}
 	
 	public static void main(String[] args) {
-		//System.out.println("Hello world");
-		//new PlayGame().playGame();
 		launch(args);
 	}
 

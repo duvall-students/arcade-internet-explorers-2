@@ -6,47 +6,38 @@ import javafx.geometry.Point2D;
 
 // Enemy class for Galaga Game, similar to Bricks in Breakout
 public class Enemy extends Breakables {
-
-    private final int pointValue=1;
-    private int amountToBreak;
-
+    public static final int ENEMY_CENTERING = 75;
+    public static final int POINTS_VALUE = 1;
+    public static final int BREAK_AMOUNT = 1;
+    protected final int ENEMY_WIDTH = 40;
+    protected final int ENEMY_HEIGHT = 40;
     private Point2D enemyVelocity;
     // enemy will slowly move down the screen
-    private static final int ENEMY_SPEED=10;
+    private static final int ENEMY_SPEED=1;
 
     public static final String ENEMY_IMAGE="resources/enemy.png";
 
     public Enemy(){
-        super(ENEMY_IMAGE);
-        amountToBreak=1;
+        super(ENEMY_IMAGE, POINTS_VALUE, BREAK_AMOUNT);
         // turn speed into velocity that can be updated on bounces
         enemyVelocity = new Point2D(ENEMY_SPEED,ENEMY_SPEED);
+        hittableView.setFitWidth(ENEMY_WIDTH);
+        hittableView.setFitHeight(ENEMY_HEIGHT);
     }
-
     @Override
-    public int getAmountToBreak() {
-        return amountToBreak;
-    }
-
-    @Override
-    public int getPointValue() {
-        return pointValue;
-    }
-
-    @Override
-    //for now, same as brick but will most likely change
+    //enemies are lined up starting more in middle of screen
     public void setStartLocation(int currentBrick, int numBricks) {
-        breakableView.setX(BRICK_WIDTH*currentBrick);
-        breakableView.setY(BRICK_HEIGHT*numBricks);
-    }
-
-    public void enemyHit()
-    {
-        amountToBreak--;
+        hittableView.setX((ENEMY_WIDTH*currentBrick)+ ENEMY_CENTERING);
+        hittableView.setY(ENEMY_HEIGHT*numBricks);
     }
 
     //Want the enemies to slowly move down the screen, so only Y value changes
     public void move(double elapsedTime){
-        breakableView.setY(breakableView.getY() + enemyVelocity.getY() * elapsedTime*1);
+        hittableView.setY(hittableView.getY() + enemyVelocity.getY() * elapsedTime*1);
+    }
+
+    //checks if it went off the bottom
+    public boolean escapes(double screenHeight){
+        return !(hittableView.getY() > screenHeight - hittableView.getBoundsInLocal().getHeight());
     }
 }
