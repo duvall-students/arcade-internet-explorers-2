@@ -1,5 +1,7 @@
 package highLevel;
 
+// Sibel Tanik
+
 import javafx.scene.image.Image;
 import javafx.geometry.Point2D;
 import java.io.FileInputStream;

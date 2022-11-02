@@ -1,5 +1,6 @@
 package galaga;
 
+// Sibel Tanik
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
