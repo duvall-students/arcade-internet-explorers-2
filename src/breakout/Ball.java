@@ -1,6 +1,9 @@
 package breakout;
 
 import highLevel.Weapon;
+
+// Sibel Tanik ( extended from Breakout )
+
 import javafx.geometry.Point2D;
 
 public class Ball extends Weapon{
