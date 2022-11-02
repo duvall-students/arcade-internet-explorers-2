@@ -3,49 +3,32 @@ package galaga;
 import java.util.ArrayList;
 import java.util.List;
 
-import breakout.BlockBrick;
-import breakout.Brick;
-import breakout.DoublePoints;
-import highLevel.Breakables;
 import highLevel.Player;
 import highLevel.SettingScene;
-import highLevel.VideoGame;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class PlayGalaga extends SettingScene{
 	
 	// Trying to commit a change
 	//background and scene setting variables
-		public static final String TITLE = "Galaga";
-		public int ENEMYAMOUNT=6;
+		private static final String TITLE = "Galaga";
+		private int ENEMYAMOUNT=6;
 		private int LASERAMOUNT=100;
-		
 		//instance variables
-		public Player myPlayer=new Player();
-		public Spaceship mySpaceship=new Spaceship();
-		public Laser myLaser=new Laser();
+		private Player myPlayer=new Player();
+		private Spaceship mySpaceship=new Spaceship();
+		private Laser myLaser=new Laser();
 		
 		
 		
 		
 		public List<String> allMySayings=new ArrayList<>();
-		public List<Enemy> myEnemies= new ArrayList<>();
-		public List<Laser> myLasers= new ArrayList<>();
+		private List<Enemy> myEnemies= new ArrayList<>();
+		private List<Laser> myLasers= new ArrayList<>();
 		
 		public void objectsInScene() {
 			myObjects.add(mySpaceship);
-
-			
 			
 		}
 		
@@ -95,9 +78,9 @@ public class PlayGalaga extends SettingScene{
 				//add to points
 				int enemyValue=enemy.getPointValue();
 				myPlayer.increaseCurrentScore(enemyValue);
-				CURRENTSCORE=myPlayer.getCurrentScore();	
+				currentScore =myPlayer.getCurrentScore();
 			}
-			HIGHESTSCORE = myPlayer.getHighScore(CURRENTSCORE);
+			highestScore = myPlayer.getHighScore(currentScore);
 			root.getChildren().remove(laser.getView());
 			myLasers.remove(laser);
 		}

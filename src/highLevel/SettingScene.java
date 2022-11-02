@@ -36,8 +36,8 @@ public abstract class SettingScene extends Application implements VideoGame{
 	//Specifics
 	public Player myPlayer=new Player();
 	public int PLAYERLIVES=3;
-	public int CURRENTSCORE=0;
-	public int HIGHESTSCORE=0;
+	public int currentScore =0;
+	public int highestScore =0;
 	
 	//lists
 	public List<String> allMySayings=new ArrayList<>();
@@ -63,8 +63,8 @@ public abstract class SettingScene extends Application implements VideoGame{
 	public Scene setUp(int width, int height, Paint background) {
 		//create all my sayings and add them to the list
     	allMySayings.add("Lives Left: "+PLAYERLIVES);
-    	allMySayings.add("Current Points: "+CURRENTSCORE);
-    	allMySayings.add("Highest Score: "+ myPlayer.getHighScore(CURRENTSCORE));
+    	allMySayings.add("Current Points: "+ currentScore);
+    	allMySayings.add("Highest Score: "+ myPlayer.getHighScore(currentScore));
     	
     	//run through all the strings and add them
     	for (String screenText : allMySayings) {
