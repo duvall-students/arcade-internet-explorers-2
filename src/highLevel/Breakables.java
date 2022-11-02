@@ -9,35 +9,21 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 
 //For power-ups and bricks, since they are very similar
-public abstract class Breakables implements Objects{
-    protected final int BRICK_WIDTH = 80;
-    protected final int BRICK_HEIGHT = 20;
-    private Random dice = new Random();
+public abstract class Breakables extends Hittable implements Objects {
+    private int amountToBreak;
 
-    protected ImageView breakableView;
-
-
-    public Breakables(String image) {
-        try{
-            breakableView =new ImageView(new Image(new FileInputStream(image)));
-        }
-        catch(FileNotFoundException e){}
-        breakableView.setFitWidth(BRICK_WIDTH);
-        breakableView.setFitHeight(BRICK_HEIGHT);
+    public Breakables(String image, int points, int breakAmount) {
+        super(image,points);
+        amountToBreak=breakAmount;
     }
-
-    public abstract int getAmountToBreak();
-
-    public abstract int getPointValue();
-
-    public int getRandomInRange (int min, int max) {
-        return min + dice.nextInt(max - min) + 1;
-    }
-
-    public Node getView(){
-        return breakableView;
+    public int getAmountToBreak() {
+        return amountToBreak;
     }
 
     public abstract void setStartLocation(int currentBrick, int numBricks);
+
+    public void beenHit(){
+        amountToBreak--;
+    }
 
 }
