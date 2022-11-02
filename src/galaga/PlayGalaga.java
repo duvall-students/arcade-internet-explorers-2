@@ -3,24 +3,10 @@ package galaga;
 import java.util.ArrayList;
 import java.util.List;
 
-import breakout.BlockBrick;
-import breakout.Brick;
-import breakout.DoublePoints;
-import highLevel.Breakables;
 import highLevel.Player;
 import highLevel.SettingScene;
-import highLevel.VideoGame;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class PlayGalaga extends SettingScene{
 	
@@ -29,7 +15,6 @@ public class PlayGalaga extends SettingScene{
 		private static final String TITLE = "Galaga";
 		private int ENEMYAMOUNT=6;
 		private int LASERAMOUNT=100;
-		
 		//instance variables
 		private Player myPlayer=new Player();
 		private Spaceship mySpaceship=new Spaceship();
@@ -44,8 +29,6 @@ public class PlayGalaga extends SettingScene{
 		
 		public void objectsInScene() {
 			myObjects.add(mySpaceship);
-
-			
 			
 		}
 		
@@ -95,9 +78,9 @@ public class PlayGalaga extends SettingScene{
 				//add to points
 				int enemyValue=enemy.getPointValue();
 				myPlayer.increaseCurrentScore(enemyValue);
-				CURRENTSCORE=myPlayer.getCurrentScore();	
+				currentScore =myPlayer.getCurrentScore();
 			}
-			HIGHESTSCORE = myPlayer.getHighScore(CURRENTSCORE);
+			highestScore = myPlayer.getHighScore(currentScore);
 			root.getChildren().remove(laser.getView());
 			myLasers.remove(laser);
 		}
