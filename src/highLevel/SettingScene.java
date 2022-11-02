@@ -78,6 +78,7 @@ public abstract class SettingScene extends Application implements VideoGame{
     		root.getChildren().add(text);
     		VARIABLEY=VARIABLEY-20;
     	}
+    	VARIABLEY=390;
     	
     	objectsInScene();
     	for (Objects object : myObjects) {
