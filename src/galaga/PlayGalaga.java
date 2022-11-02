@@ -8,6 +8,7 @@ import highLevel.SettingScene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 
+//maddie volchko
 public class PlayGalaga extends SettingScene{
 	
 	// Trying to commit a change
@@ -36,6 +37,7 @@ public class PlayGalaga extends SettingScene{
 		// Change properties of shapes in small ways to animate them over time
 	    public void step (double elapsedTime) {
 	        // updated the lasers
+	    	
 			for(Laser thisLaser : myLasers) {
 				thisLaser.move(elapsedTime);
 			}
@@ -63,6 +65,16 @@ public class PlayGalaga extends SettingScene{
 					}
 				}
 			}
+	    	if (PLAYERLIVES<=0) {
+	    	root.getChildren().clear();
+	    	Text text=new Text();
+			String welcome="You lost :(";
+			text.setText(welcome);
+			text.setX(200);
+			text.setY(200);
+			root.getChildren().add(text);
+	    	}
+			
 
 		} 
 	    
@@ -88,6 +100,10 @@ public class PlayGalaga extends SettingScene{
 		public void advanceLevel(int level){
 			mySpaceship.reset();
 			setUpBreakable(level);
+		}
+		
+		public void addPowerUp() {
+			//need to add a powerup
 		}
 
 		

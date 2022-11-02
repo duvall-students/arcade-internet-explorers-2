@@ -13,7 +13,7 @@ public class Enemy extends Breakables {
     private final int ENEMY_HEIGHT = 40;
     private Point2D enemyVelocity;
     // enemy will slowly move down the screen
-    private static final int ENEMY_SPEED=10;
+    private static final int ENEMY_SPEED=40;
 
     private static final String ENEMY_IMAGE="resources/enemy.png";
 
